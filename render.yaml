@@ -1,0 +1,28 @@
+# Render 部署配置（Blueprint）
+# 用法：把本仓库推到 GitHub → render.com → New → Blueprint → 选仓库 → Apply
+# 说明：
+#   - 不写死 PORT：Render 会注入 PORT，server.js 已读取该变量
+#   - 免费版实例 15 分钟无流量会休眠（冷启动约 30s），且文件系统是临时的，
+#     data/results.json 会在重启/重新部署后清空。需要长期保留请升级到 Starter（$7/月）并挂持久磁盘：
+#       disk:
+#         name: rule-lab-data
+#         mountPath: /var/data
+#         sizeGB: 1
+#     同时把环境变量 DATA_DIR 设为 /var/data
+services:
+  - type: web
+    name: rule-lab
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # 可选：设置后，删除/清空全站实验结果需要请求头 x-admin-token 匹配
+      # - key: ADMIN_TOKEN
+      #   generateValue: true
+      # 可选：挂持久磁盘后指向挂载目录
+      # - key: DATA_DIR
+      #   value: /var/data

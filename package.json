@@ -1,0 +1,16 @@
+{
+  "name": "rule-lab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "规则养蛊局 RULE LAB - 基于虚拟人群模拟的现实制度压力测试平台",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/run-sim.js",
+    "e2e": "node tests/e2e.js",
+    "verify": "node tests/verify-v2.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

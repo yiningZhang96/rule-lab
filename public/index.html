@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>规则养蛊局 RULE LAB · 制度压力测试平台</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>">
+<script>
+/* 主题预加载（避免闪烁） */
+(function () {
+  try {
+    var t = JSON.parse(localStorage.getItem('rulelab.theme') || '{}');
+    var r = document.documentElement;
+    r.setAttribute('data-theme', t.theme || 'light');
+    if (t.accent) r.style.setProperty('--accent', t.accent);
+    if (t.accent2) r.style.setProperty('--accent2', t.accent2);
+  } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+})();
+</script>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#/">🧪 规则养蛊局 <span class="brand-en">RULE LAB</span></a>
+  <nav>
+    <a href="#/" data-nav="home">首页</a>
+    <a href="#/labs" data-nav="labs">实验室</a>
+    <a href="#/create" data-nav="create">新建场景</a>
+    <a href="#/results" data-nav="results">结果对比</a>
+  </nav>
+  <div class="topbar-right">
+    <button class="btn ghost small" id="btnTheme" title="主题与配色">🎨 主题</button>
+    <span class="pill">ABM · 红队测试 · 零依赖</span>
+  </div>
+</header>
+<main id="view"></main>
+<footer class="footer">
+  规则由你制定，漏洞由它们发现 · 结果自动保存，可在「结果对比」横向分析
+</footer>
+<div id="toast"></div>
+<div id="themeBackdrop"></div>
+<div class="theme-panel" id="themePanel"></div>
+<script src="/charts.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
